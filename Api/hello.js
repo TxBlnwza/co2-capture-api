@@ -6,5 +6,5 @@ export default function handler(request, response) {
   response.status(200).json({
     message: "Hello from Vercel! Your API is working.",
     timestamp: new Date().toISOString()
-  })
+  });
 }
