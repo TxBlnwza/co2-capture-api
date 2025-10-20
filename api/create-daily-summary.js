@@ -35,7 +35,8 @@ export default async function handler(request, response) {
       .upsert({
         summary_date: reportDate,
         total_energy_kwh: summary.final_total_energy_kwh,
-        avg_co2_reduced_ppm: summary.final_avg_co2_reduced_ppm,
+        avg_co2_reduced_ppm: summary.final_avg_co2_reduced_ppm, // <<<<<<< ค่าเดิม
+        avg_efficiency_percentage: summary.final_avg_efficiency_percentage, // <<<<<<< เพิ่มค่าใหม่
         avg_ph_wolffia: summary.final_avg_ph_wolffia,
         avg_ph_shells: summary.final_avg_ph_shells,
         avg_temp_solar_front: summary.final_avg_temp_solar_front,

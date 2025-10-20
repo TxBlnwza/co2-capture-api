@@ -23,8 +23,14 @@ export default async function handler(request, response) {
       return response.status(400).json({ error: 'Missing required CO2 data' });
     }
 
-    // 6. คำนวณค่า CO2 ที่ลดได้
+    // 6. คำนวณค่าทั้ง 2 แบบ
     const co2_reduced_ppm_interval = co2_position1_ppm - co2_position3_ppm;
+    
+    let efficiency_percentage = 0;
+    if (co2_position1_ppm && co2_position1_ppm > 0) {
+      // สูตร: ( (เข้า - ออก) / เข้า ) * 100
+      efficiency_percentage = ((co2_position1_ppm - co2_position3_ppm) / co2_position1_ppm) * 100;
+    }
 
     // 7. บันทึกข้อมูลลงในตาราง co2_data
     const { data, error } = await supabase
@@ -34,7 +40,8 @@ export default async function handler(request, response) {
           co2_position1_ppm,
           co2_position2_ppm,
           co2_position3_ppm,
-          co2_reduced_ppm_interval, // ใส่ค่าที่คำนวณได้ลงไปด้วย
+          co2_reduced_ppm_interval, // <<<<<<<<<<<<<<<< ค่าที่ 1
+          efficiency_percentage,    // <<<<<<<<<<<<<<<< ค่าที่ 2
         },
       ])
       .select();
