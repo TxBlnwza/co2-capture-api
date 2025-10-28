@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/create-daily-summary",
-      "schedule": "1 17 * * *"
+      "schedule": "0 17 * * *"
     }
   ]
 }
