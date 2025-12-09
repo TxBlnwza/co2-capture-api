@@ -68,6 +68,7 @@ export default async function handler(req, res) {
           avg_ph_shells: s.final_avg_ph_shells,
           avg_temp_solar_front: s.final_avg_temp_solar_front,
           warnings_count: s.final_warnings_count,
+          total_co2_reduced_kg: s.final_total_co2_reduced_kg,
         },
         { onConflict: 'summary_date' }
       )
